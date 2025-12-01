@@ -34,5 +34,5 @@ I will continue improving and expanding the site with more projects and interact
 
 **Email:** anamikaa17@gmail.com  
 **GitHub:** https://github.com/anamikaa17  
-**LinkedIn:** *(add if you want)*  
+  
 
