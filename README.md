@@ -21,12 +21,6 @@ The site is fully responsive, professionally designed, and includes a secure cer
 
 ---
 
-## 🔹 Live Website
-👉 **Hosted on GitHub Pages**  
-(Insert your link after deployment)
-
----
-
 ## 🔹 Contact
 **Email:** anamikamallick017@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/anamika-m-01a1a8279/
