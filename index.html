@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anamika Mallick | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --surface: #020617;
+      --accent: #f97316;  /* Orange, professional */
+      --accent-muted: #1f2937;
+      --text: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border-subtle: #1f2937;
+      --error: #f97373;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, #020617 40%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* NAVBAR (transparent title bar) */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.7),
+        rgba(2, 6, 23, 0.1)
+      );
+    }
+
+    .nav-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.18s ease-out;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      margin-bottom: 4px;
+      border-radius: 999px;
+    }
+
+    /* LAYOUT */
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 5.5rem 1.25rem 3rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--text-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    /* HOME / HERO */
+
+    #home {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      margin: 1rem 0 0.5rem;
+      line-height: 1.1;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      color: var(--text-soft);
+      max-width: 32rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      padding: 0.6rem 1.35rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111827;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-soft);
+      border-color: var(--border-subtle);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .hero-socials-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .social-link {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease-out, border-color 0.15s ease-out,
+        background 0.15s ease-out;
+    }
+
+    .social-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .social-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      padding: 0.5rem;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+    }
+
+    .hero-image-inner {
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+      max-height: 480px;
+    }
+
+    .hero-image-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* important: no fade effect */
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid rgba(55, 65, 81, 0.7);
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 1.2rem;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-body {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+
+    .key-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .metric {
+      padding: 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 1rem;
+      border: 1px dashed var(--border-subtle);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-value {
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skills-card {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 1.2rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .skills-card h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    .skills-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .skills-list li + li {
+      margin-top: 0.25rem;
+    }
+
+    /* ACHIEVEMENTS */
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .achievement-card {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 1.1rem;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .achievement-meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .achievement-title {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .achievement-body {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+
+    /* CERTIFICATES */
+
+    .certificates-layout {
+      display: grid;
+      grid-template-columns: 1.7fr 1.1fr;
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+    }
+
+    .certificate-card {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 1rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 90px;
+    }
+
+    .certificate-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .certificate-link {
+      font-size: 0.8rem;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    .cert-empty {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .login-panel {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 1.2rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .login-panel h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.5rem;
+      color: var(--text-soft);
+    }
+
+    .login-panel p {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+    }
+
+    input[type="password"],
+    input[type="text"],
+    input[type="url"] {
+      border-radius: 0.8rem;
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 0.6rem;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    input::placeholder {
+      color: #6b7280;
+    }
+
+    .btn-small {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--text-soft);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+    }
+
+    .btn-small.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #111827;
+    }
+
+    .btn-small.danger {
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    .login-status {
+      font-size: 0.8rem;
+      margin-top: 0.35rem;
+    }
+
+    .login-status.ok {
+      color: #a7f3d0;
+    }
+
+    .login-status.err {
+      color: var(--error);
+    }
+
+    .admin-controls {
+      margin-top: 1rem;
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 0.9rem;
+    }
+
+    .admin-controls h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.5rem;
+      color: var(--text-soft);
+    }
+
+    .admin-inline {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .certificate-actions {
+      margin-top: 0.35rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* RESUME */
+
+    .resume-card {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 1.25rem;
+      padding: 1.5rem 1.6rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .resume-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .resume-meta {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .resume-section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-top: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .resume-list {
+      font-size: 0.86rem;
+      list-style: none;
+      color: var(--text-soft);
+    }
+
+    .resume-list li + li {
+      margin-top: 0.22rem;
+    }
+
+    /* CONTACT & MAP */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr;
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    .contact-item {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-soft);
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    .map-card {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .map-header {
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .map-header svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .map-header span {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 260px;
+      border: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 1.5rem 1.25rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrapper {
+        max-width: 360px;
+        margin: 0 auto;
+        order: -1;
+      }
+
+      .about-grid,
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .certificates-layout,
+      .resume-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      main {
+        padding-top: 4.5rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        right: 1.25rem;
+        top: 3rem;
+        background: rgba(15, 23, 42, 0.98);
+        border-radius: 0.9rem;
+        border: 1px solid var(--border-subtle);
+        padding: 0.75rem 0.9rem;
+        display: none;
+      }
+
+      nav.open {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      #home {
+        min-height: auto;
+      }
+
+      .about-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        font-size: 1.6rem;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-image-inner img {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>Anamika&nbsp;Mallick</span>
+      </div>
+
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#achievements">Achievements</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <!-- LEFT -->
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Portfolio · B.Tech CSE (IoT, Cyber Security & Blockchain)
+          </div>
+
+          <h1 class="hero-title">
+            Hey, I am <span>Anamika Mallick</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Aspiring Cyber Security & AI Engineer · Smart India Hackathon 2025 Finalist
+          </p>
+
+          <p class="hero-description">
+            I am a Computer Science and Engineering student specializing in IoT, Cyber Security,
+            and Blockchain at IEM Newtown. I am passionate about secure systems, generative AI,
+            and building modern solutions that create real impact.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              href="https://drive.google.com/file/d/1Hmgo80P8hx6iZrrHEAlycjn6hZCmsPaU/view?usp=sharing"
+              class="btn-primary"
+              target="_blank"
+              rel="noopener"
+            >
+              ⬇ Download Resume
+            </a>
+
+            <a href="#contact" class="btn-outline">
+              ✉ Contact Me
+            </a>
+          </div>
+
+          <div class="hero-socials">
+            <span class="hero-socials-label">Connect</span>
+            <div class="social-icons">
+              <!-- Email -->
+              <a
+                class="social-link"
+                href="mailto:anamikamallick017@gmail.com"
+                aria-label="Email"
+              >
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M4 7l8 5 8-5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+
+              <!-- WhatsApp -->
+              <a
+                class="social-link"
+                href="https://wa.me/918334945651"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+              >
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.1A9 9 0 1 0 12 3z"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.5 9.2c.2-.4.3-.7.6-.7.3 0 .7.1 1.1.5.4.3.6.9.5 1.3-.1.4-.4.6-.3.8.1.2.4.6.9 1 .6.5 1.2.7 1.4.6.2-.1.3-.4.6-.7.3-.2.6-.2 1 0 .4.2 1 .5 1 .9 0 .4-.3 1.1-.8 1.6-.5.5-1.3.6-2.2.5a5.4 5.4 0 0 1-3-1.4 6.4 6.4 0 0 1-1.9-3c-.2-.8-.1-1.5.1-2z"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+
+              <!-- Instagram (replace with your real link when ready) -->
+              <a
+                class="social-link"
+                href="https://www.instagram.com/dfwanaa?igsh=anFlZGRmMjB0NzAx"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                  />
+                  <circle cx="17" cy="7" r="1.1" fill="currentColor" />
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                class="social-link"
+                href="https://www.linkedin.com/in/anamika-m-01a1a8279/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                  />
+                  <path
+                    d="M7 17V10"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="7" cy="7" r="1.1" fill="currentColor" />
+                  <path
+                    d="M11 17v-4.2A1.8 1.8 0 0 1 12.8 11c.9 0 2.2.6 2.2 2.4V17"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT IMAGE (use your own photo when you have it) -->
+        <div class="hero-image-wrapper">
+          <div class="hero-image-inner">
+            <img
+              src="anamika.jpg"
+              alt="Portfolio portrait placeholder"
+            />
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Smart India Hackathon 2025 Finalist
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-title">About</div>
+      <div class="section-heading">Who I am</div>
+
+      <div class="about-grid">
+        <div class="card">
+          <div class="card-title">Profile</div>
+          <div class="card-body">
+            <p style="margin-bottom:0.75rem;">
+              I am Anamika Mallick, a B.Tech student in Computer Science and Engineering
+              specializing in IoT, Cyber Security, and Blockchain at IEM Newtown.
+            </p>
+            <p>
+              I am interested in secure architectures, generative AI, and modern web
+              development. I enjoy working in teams, solving real problems, and engaging
+              with communities through IEEE and hackathons.
+            </p>
+            <div class="key-metrics">
+              <div class="metric">
+                <div class="metric-label">Current course</div>
+                <div class="metric-value">
+                  B.Tech CSE (IoT, Cyber Security & Blockchain)
+                </div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Communities</div>
+                <div class="metric-value">
+                  IEEE MTTS · IEEE Computer Society · SIH Finalist 2025
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Focus areas</div>
+          <div class="card-body">
+            <ul class="resume-list">
+              <li>• Cyber security and secure system design</li>
+              <li>• Blockchain and transparent digital systems</li>
+              <li>• Generative AI and AI-assisted tools</li>
+              <li>• Modern web interfaces and user experience</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">Skills</div>
+      <div class="section-heading">What I bring to a team</div>
+
+      <div class="skills-grid">
+        <!-- Languages & communication -->
+        <div class="skills-card">
+          <h3>Languages & communication</h3>
+          <ul class="skills-list">
+            <li><strong>English</strong> – Proficient</li>
+            <li><strong>Bengali</strong> – Mother tongue</li>
+            <li><strong>Hindi</strong> – Proficient</li>
+          </ul>
+
+          <h3 style="margin-top:1rem;">Soft skills</h3>
+          <ul class="skills-list">
+            <li>Teamwork and leadership</li>
+            <li>Time management</li>
+            <li>Problem-solving and resilience</li>
+          </ul>
+        </div>
+
+        <!-- Technical & certifications -->
+        <div class="skills-card">
+          <h3>Technical & certifications</h3>
+          <ul class="skills-list">
+            <li>Cyber Security certification – Google</li>
+            <li>Cyber Security certification – IBM</li>
+            <li>Gen AI – Google AI Essentials</li>
+          </ul>
+
+          <h3 style="margin-top:1rem;">Domains</h3>
+          <ul class="skills-list">
+            <li>IoT and embedded concepts</li>
+            <li>Cyber security fundamentals</li>
+            <li>Blockchain basics</li>
+            <li>Web development and UI</li>
+          </ul>
+        </div>
+
+        <!-- Personal profile -->
+        <div class="skills-card">
+          <h3>Personal profile</h3>
+          <ul class="skills-list">
+            <li><strong>Strengths:</strong> Leadership, time management</li>
+            <li><strong>Weaknesses:</strong> Stress, overthinking</li>
+          </ul>
+
+          <h3 style="margin-top:1rem;">Summary</h3>
+          <p class="skills-list">
+            I enjoy taking ownership of tasks, planning work clearly, and
+            improving myself through feedback and practice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+      <div class="section-title">Achievements</div>
+      <div class="section-heading">Highlights and memberships</div>
+
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-meta">Hackathon</div>
+          <div class="achievement-title">Smart India Hackathon Finalist 2025</div>
+          <div class="achievement-body">
+            Selected as a finalist for Smart India Hackathon 2025 for building an
+            innovative solution with real-world impact and working efficiently
+            in a team environment.
+          </div>
+        </div>
+
+        <div class="achievement-card">
+          <div class="achievement-meta">Professional membership</div>
+          <div class="achievement-title">Member – IEEE MTTS</div>
+          <div class="achievement-body">
+            Active member of IEEE Microwave Theory and Techniques Society (MTTS),
+            engaging in technical events, workshops, and initiatives that focus
+            on communication and microwave technologies.
+          </div>
+        </div>
+
+        <div class="achievement-card">
+          <div class="achievement-meta">Professional membership</div>
+          <div class="achievement-title">Member – IEEE Computer Society</div>
+          <div class="achievement-body">
+            Member of the IEEE Computer Society, participating in activities
+            that promote computer science, software engineering, and
+            professional growth.
+          </div>
+        </div>
+
+        <div class="achievement-card">
+          <div class="achievement-meta">Growth</div>
+          <div class="achievement-title">Continuous learning</div>
+          <div class="achievement-body">
+            Regularly upskilling through online certifications and hands-on
+            projects in cyber security, AI, and web development.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates">
+      <div class="section-title">Certificates</div>
+      <div class="section-heading">
+        Certifications I have earned
+      </div>
+
+      <div class="certificates-layout">
+        <!-- Public certificates display -->
+        <div>
+          <p class="skills-list" style="margin-bottom:1rem;">
+            This section displays my certificates. They are visible to everyone,
+            but only I can add or remove them using the login panel on this page.
+          </p>
+          <div id="certificatesGrid" class="certificates-grid">
+            <!-- Dynamic cards go here -->
+          </div>
+          <p id="certEmpty" class="cert-empty">
+            No certificates have been added yet. Once I log in and upload
+            certificate details, they will appear here.
+          </p>
+        </div>
+
+        <!-- Login panel -->
+        <div class="login-panel">
+          <h3>Admin login</h3>
+          <p>
+            Only I can log in and manage certificates using a private password.
+            Visitors can view certificates but cannot modify them.
+          </p>
+
+          <div class="field">
+            <label for="passwordInput">Password</label>
+            <input
+              type="password"
+              id="passwordInput"
+              placeholder="Enter admin password"
+            />
+          </div>
+
+          <button class="btn-small primary" id="loginButton">
+            Login
+          </button>
+          <div id="loginStatus" class="login-status"></div>
+
+          <div id="adminControls" class="admin-controls" style="display:none;">
+            <h4>Manage certificates</h4>
+
+            <div class="field">
+              <label for="certTitle">Certificate title</label>
+              <input
+                type="text"
+                id="certTitle"
+                placeholder="e.g., Google Cyber Security Certificate"
+              />
+            </div>
+
+            <div class="field">
+              <label for="certUrl">Certificate link (URL)</label>
+              <input
+                type="url"
+                id="certUrl"
+                placeholder="Paste link to certificate (Drive, Coursera, etc.)"
+              />
+            </div>
+
+            <div class="admin-inline">
+              <button class="btn-small primary" id="addCertButton">
+                Add certificate
+              </button>
+              <button class="btn-small" id="logoutButton">
+                Logout
+              </button>
+            </div>
+
+            <p style="font-size:0.8rem;color:var(--text-soft);margin-top:0.6rem;">
+              Changes are protected by this password. Other visitors cannot add
+              or remove anything without logging in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume">
+      <div class="section-title">Resume</div>
+      <div class="section-heading">One-page overview</div>
+
+      <div class="resume-card">
+        <div class="resume-grid">
+          <div>
+            <div class="resume-name">Anamika Mallick</div>
+            <div class="resume-meta">
+              B.Tech in Computer Science and Engineering (IoT, Cyber Security & Blockchain)  
+              Institute of Engineering and Management, Newtown (IEMK)
+            </div>
+            <div class="resume-meta" style="margin-top:0.25rem;">
+              Phone: 8334945651 · Email: anamikamallick017@gmail.com
+            </div>
+            <div class="resume-meta">
+              Address: 135/11 Vivekananda College Road, Thakurpukur, Kolkata – 700063
+            </div>
+            <div class="resume-meta">
+              Date of birth: 17 January 2007 · Blood group: B−
+            </div>
+
+            <div class="resume-section-title">Education</div>
+            <ul class="resume-list">
+              <li>
+                <strong>B.Tech in CSE</strong>, specialization in IoT, Cyber
+                Security and Blockchain – IEMK Newtown
+              </li>
+              <li>
+                Class 12 – 2023 · 84%
+              </li>
+              <li>
+                Class 10 – 2021 · 89%
+              </li>
+            </ul>
+
+            <div class="resume-section-title">Strengths and weaknesses</div>
+            <ul class="resume-list">
+              <li><strong>Strengths:</strong> Leadership skills, time management</li>
+              <li><strong>Weaknesses:</strong> Stress, overthinking</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="resume-section-title">Key skills</div>
+            <ul class="resume-list">
+              <li>Communication skills in English (proficient)</li>
+              <li>Bengali (mother tongue)</li>
+              <li>Hindi (proficient)</li>
+              <li>Teamwork and leadership</li>
+              <li>Time management</li>
+              <li>Cyber security fundamentals</li>
+              <li>Gen AI understanding</li>
+            </ul>
+
+            <div class="resume-section-title">Certifications</div>
+            <ul class="resume-list">
+              <li>Cyber Security certification – Google</li>
+              <li>Cyber Security certification – IBM</li>
+              <li>Gen AI – Google AI Essentials</li>
+            </ul>
+
+            <div class="resume-section-title">Achievements</div>
+            <ul class="resume-list">
+              <li>Smart India Hackathon Finalist 2025</li>
+              <li>Member – IEEE MTTS</li>
+              <li>Member – IEEE Computer Society</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">Contact</div>
+      <div class="section-heading">Let us get in touch</div>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:anamikamallick017@gmail.com">
+              anamikamallick017@gmail.com
+            </a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Phone / WhatsApp</span>
+            <a href="tel:+918334945651">+91 83349 45651</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">LinkedIn</span>
+            <a
+              href="https://www.linkedin.com/in/anamika-m-01a1a8279/"
+              target="_blank"
+              rel="noopener"
+            >
+              linkedin.com/in/anamika-m-01a1a8279
+            </a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Instagram</span>
+            <a
+              href="https://www.instagram.com/dfwanaa/"
+              target="_blank"
+              rel="noopener"
+            >
+              instagram.com 
+            </a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Address</span>
+            135/11 Vivekananda College Road, Thakurpukur, Kolkata – 700063
+          </div>
+        </div>
+
+        <div class="map-card">
+          <div class="map-header">
+            <!-- Simple Google Maps style pin icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 3a6 6 0 0 0-6 6c0 4.2 6 12 6 12s6-7.8 6-12a6 6 0 0 0-6-6z"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linejoin="round"
+              />
+              <circle
+                cx="12"
+                cy="9"
+                r="2.2"
+                stroke="currentColor"
+                stroke-width="1.4"
+              />
+            </svg>
+            <span>Google Map – Home location</span>
+          </div>
+          <iframe
+            class="map-frame"
+            src="https://www.google.com/maps?q=135/11+Vivekananda+College+Road+Thakurpukur+Kolkata+700063&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Anamika Mallick · Portfolio
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const nav = document.getElementById("nav");
+
+    navToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+    document.querySelectorAll("nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+      });
+    });
+
+    // Footer year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Certificates + login
+    const PASSWORD = "Anamika123";
+
+    const loginButton = document.getElementById("loginButton");
+    const logoutButton = document.getElementById("logoutButton");
+    const loginStatus = document.getElementById("loginStatus");
+    const passwordInput = document.getElementById("passwordInput");
+    const adminControls = document.getElementById("adminControls");
+    const addCertButton = document.getElementById("addCertButton");
+    const certTitleInput = document.getElementById("certTitle");
+    const certUrlInput = document.getElementById("certUrl");
+    const certificatesGrid = document.getElementById("certificatesGrid");
+    const certEmpty = document.getElementById("certEmpty");
+
+    let isLoggedIn = false;
+    let certificates = [];
+
+    function loadCertificates() {
+      try {
+        const stored = localStorage.getItem("anamika_certificates");
+        if (stored) {
+          certificates = JSON.parse(stored);
+        }
+      } catch (e) {
+        certificates = [];
+      }
+      renderCertificates();
+    }
+
+    function persistCertificates() {
+      localStorage.setItem(
+        "anamika_certificates",
+        JSON.stringify(certificates)
+      );
+    }
+
+    function renderCertificates() {
+      certificatesGrid.innerHTML = "";
+      if (!certificates.length) {
+        certEmpty.style.display = "block";
+        return;
+      }
+      certEmpty.style.display = "none";
+
+      certificates.forEach((cert, index) => {
+        const card = document.createElement("div");
+        card.className = "certificate-card";
+
+        const titleEl = document.createElement("div");
+        titleEl.className = "certificate-title";
+        titleEl.textContent = cert.title;
+
+        const linkEl = document.createElement("a");
+        linkEl.className = "certificate-link";
+        linkEl.href = cert.url;
+        linkEl.target = "_blank";
+        linkEl.rel = "noopener";
+        linkEl.textContent = cert.url;
+
+        card.appendChild(titleEl);
+        card.appendChild(linkEl);
+
+        if (isLoggedIn) {
+          const actions = document.createElement("div");
+          actions.className = "certificate-actions";
+
+          const delBtn = document.createElement("button");
+          delBtn.className = "btn-small danger";
+          delBtn.textContent = "Delete";
+          delBtn.addEventListener("click", () => {
+            certificates.splice(index, 1);
+            persistCertificates();
+            renderCertificates();
+          });
+
+          actions.appendChild(delBtn);
+          card.appendChild(actions);
+        }
+
+        certificatesGrid.appendChild(card);
+      });
+    }
+
+    loginButton.addEventListener("click", () => {
+      const entered = passwordInput.value;
+      if (entered === PASSWORD) {
+        isLoggedIn = true;
+        adminControls.style.display = "block";
+        loginStatus.textContent = "Logged in successfully.";
+        loginStatus.className = "login-status ok";
+        passwordInput.value = "";
+        renderCertificates();
+      } else {
+        loginStatus.textContent = "Incorrect password.";
+        loginStatus.className = "login-status err";
+      }
+    });
+
+    logoutButton.addEventListener("click", () => {
+      isLoggedIn = false;
+      adminControls.style.display = "none";
+      loginStatus.textContent = "You have logged out.";
+      loginStatus.className = "login-status";
+      renderCertificates();
+    });
+
+    addCertButton.addEventListener("click", () => {
+      if (!isLoggedIn) return;
+      const title = certTitleInput.value.trim();
+      const url = certUrlInput.value.trim();
+      if (!title || !url) {
+        loginStatus.textContent =
+          "Please enter both certificate title and link.";
+        loginStatus.className = "login-status err";
+        return;
+      }
+      certificates.push({ title, url });
+      persistCertificates();
+      renderCertificates();
+      certTitleInput.value = "";
+      certUrlInput.value = "";
+      loginStatus.textContent = "Certificate added.";
+      loginStatus.className = "login-status ok";
+    });
+
+    loadCertificates();
+  </script>
+</body>
+</html>
